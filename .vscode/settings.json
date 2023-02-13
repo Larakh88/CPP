@@ -49,6 +49,14 @@
 		"tuple": "cpp",
 		"type_traits": "cpp",
 		"typeinfo": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"__bits": "cpp",
+		"__split_buffer": "cpp",
+		"clocale": "cpp",
+		"cmath": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"variant": "cpp",
+		"vector": "cpp"
 	}
 }

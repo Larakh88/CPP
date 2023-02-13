@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:03:54 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/02/01 20:15:45 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/02/12 22:48:56 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 # define PHONEBOOK_H
 
 #include <iostream>
-#include "contact.hpp"
+#include "Contact.hpp"
 
 class PhoneBook {
 public:
-	contact.contact1;
-	contact.contact2;
-	contact.contact3;
-	contact.contact4;
-	contact.contact5;
-	contact.contact6;
-	contact.contact7;
-	contact.contact8;
+	//Contact Contacts[8];
+	PhoneBook(void);
+	~PhoneBook(void);
 };
 
 #endif

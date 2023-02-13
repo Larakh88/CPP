@@ -6,26 +6,50 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:54:59 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/02/02 12:31:05 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:48:27 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(std::string s1, std::string s2, std::string s3, int nb, std::string s4) :
-FirstName(s1),
-LastName(s2),
-Nickname(s3),
-PhoneNumber(nb),
-DarkestSecret(s4)
+static int	is_number(std::string number)
 {
-	std::cout << "Welcome to My Awesome PhoneBook!" << std::endl;
-	std::cout << "First Name: " << this->FirstName << std::endl;
-	std::cout << "Last Name: " << this->LastName << std::endl;
-	return;
+	int	i;
+
+	i = 0;
+	while (number[i])
+	{
+		if ((number[i] < '0' || number[i] > '9') && number[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+Contact::Contact(void)
+{
+	std::string	temp;
+
+	std::cout << "\033[34m" << "Enter your First Name: " << "\033[30m";
+	getline(std::cin, this->FirstName);
+	std::cout << "\033[34m" << "Enter your Last Name: " << "\033[30m";
+	getline(std::cin, this->LastName);
+	std::cout << "\033[34m" << "Enter your Nickname: " << "\033[30m";
+	getline(std::cin, this->Nickname);
+	std::cout << "\033[34m" << "Enter your Phone Number: " << "\033[30m";
+	getline(std::cin, temp);
+	while (is_number(temp) == 0)
+	{
+		std::cout << "\033[31m" << "Enter a Valid Phone Number!" << "\033[30m" << std::endl;
+		getline(std::cin, temp);
+	}
+	this->PhoneNumber = temp;
+	std::cout << "\033[34m" << "Enter your Darkest Secret: " << "\033[30m";
+	getline(std::cin, this->DarkestSecret);
+ 	return;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Thank you for using My Awesome PhoneBook...Bye!" << std::endl;
+	return;
 }
