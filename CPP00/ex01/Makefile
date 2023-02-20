@@ -6,13 +6,13 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 14:33:23 by lel-khou          #+#    #+#              #
-#    Updated: 2023/02/12 21:58:24 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/02/20 21:08:02 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = g++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = phonebook
 
@@ -25,7 +25,7 @@ OBJS = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAG) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	
 clean:
 	$(RM) $(OBJS)
