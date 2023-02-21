@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:10:31 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/02/21 07:59:52 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/02/21 08:38:38 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	PhoneBook::setContact(std::string info[5], int i)
 	PhoneBook::size += 1;
 }
 
-void	PhoneBook::printContact(int i)
+void	PhoneBook::printContact(int i) const
 {
 	std::cout << "First Name: " << Contacts[i].getFirst() << std::endl;
 	std::cout << "Last Name: " << Contacts[i].getLast() << std::endl;
@@ -53,7 +53,7 @@ void	cut_name(std::string s)
 		std::cout << std::right << std::setw(10) << s << "|";
 }
 
-void	PhoneBook::printIndexTable(int i)
+void	PhoneBook::printIndexTable(int i) const
 {
 	int	j;
 	int	k;
