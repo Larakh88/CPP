@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:09:34 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/11 18:59:36 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:14:59 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
 	std::string	_name;
 
 public:
-	HumanA(std::string name, Weapon &_weaponA);
+	HumanA(std::string name, Weapon &weaponA);
 	~HumanA(void);
 	void	attack(void) const;
 };
