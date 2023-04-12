@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:28:33 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/12 15:44:23 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/13 00:05:50 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,26 @@ std::string	getNewFile(std::string name)
 
 std::string	replace(char **argv, std::string text)
 {
-	
+	std::string	after;
+	std::string	before;
+	std::size_t	found;
+	std::string	s1 = argv[2];
+	std::string	s2 = argv[3];
+
+	found = text.find(s1);
+	while (found < text.length())
+	{
+		if (found < text.length())
+		{
+			after = text.substr(found + s1.length(), text.length());
+			before = text.substr(0, found);
+			before.append(s2);
+			before.append(after);
+			text = before;
+	 	}
+		found = text.find(s1, found + s2.length());
+	}
+	return (text);
 }
 
 int main(int argc, char **argv)
@@ -31,14 +50,15 @@ int main(int argc, char **argv)
 	if (argc == 4)
 	{
 		std::string	newFilename = getNewFile(argv[1]);;
-		std::ofstream	newFile(newFilename);
+		std::ofstream	newFile;;
 		std::ifstream	myFile (argv[1]);
 		std::string		line;
 		std::string		text;
 		
-		if (!myFile.is_open())
+		if (!myFile.good())
 		{
-			std::cout << "File cannot be opened!" << std::endl;
+			std::cout << "File Error!" << std::endl;
+			myFile.close();
 			return (0);
 		}
 		while (myFile)
@@ -51,6 +71,14 @@ int main(int argc, char **argv)
 			}		
 		}
 		text = replace(argv, text);
+		newFile.open(newFilename);
+		if (!newFile.good())
+		{
+			std::cout << "File Error!" << std::endl;
+			newFile.close();
+			myFile.close();
+			return (0);
+		}
 		newFile << text;
 		newFile.close();
 		myFile.close();
