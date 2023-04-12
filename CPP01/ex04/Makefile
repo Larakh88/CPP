@@ -6,7 +6,7 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 23:27:19 by lel-khou          #+#    #+#              #
-#    Updated: 2023/04/11 23:28:24 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/04/12 15:44:24 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ CXX = c++
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 
-NAME = 
+NAME = replace
 
-HEADER = 
+HEADER = replace.hpp
 
 RM = rm -f
 
-SRC = main.cpp 
+SRC = main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
