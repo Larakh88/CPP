@@ -61,6 +61,13 @@
 		"iomanip": "cpp",
 		"deque": "cpp",
 		"fstream": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"__hash_table": "cpp",
+		"__node_handle": "cpp",
+		"__verbose_abort": "cpp",
+		"array": "cpp",
+		"optional": "cpp",
+		"sstream": "cpp",
+		"unordered_map": "cpp"
 	}
 }
