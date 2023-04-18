@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:08 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/14 19:56:10 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:37:58 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class	Fixed {
 private:
 	int					_nb;
-	static int const	_frac = 8;
+	static const int	_frac = 8;
 
 public:
 	Fixed (void);
 	~Fixed (void);
-	Fixed (Fixed const & copy);
-	Fixed&	operator=(Fixed const & rhs);
-	void	setRawBits (int const raw);
+	Fixed (const Fixed &copy);
+	Fixed	&operator=(const Fixed &rhs);
+	void	setRawBits (const int raw);
 	int		getRawBits (void) const;
 
 };

@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:05 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/17 14:53:01 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:38:02 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ Fixed::Fixed (void) : _nb(0)
 	std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed ( int const nbr)
+Fixed::Fixed (const int nbr)
 {
 	std::cout << "Int constructor called\n";
-	this->_nb = nbr << _frac;
+	this->_nb = nbr << this->_frac;
 }
 
-Fixed::Fixed (float const nbr)
+Fixed::Fixed (const float nbr)
 {
 	int	decimal = 1;
 	
@@ -38,14 +38,14 @@ Fixed::~Fixed (void)
 	std::cout << "Destructor called\n";
 }
 
-Fixed::Fixed (Fixed const & copy)
+Fixed::Fixed (const Fixed &copy)
 {
 	std::cout << "Copy constructor called\n";
 	*this = copy;
 	return;
 }
 
-Fixed&	Fixed::operator=(Fixed const & rhs)
+Fixed	&Fixed::operator=(const Fixed &rhs)
 {
 	std::cout << "Copy assignment operator called\n";
 	if (this != &rhs)
@@ -53,7 +53,7 @@ Fixed&	Fixed::operator=(Fixed const & rhs)
 	return (*this);
 }
 
-void	Fixed::setRawBits (int const raw)
+void	Fixed::setRawBits (const int raw)
 {
 	this->_nb = raw;
 }
@@ -78,11 +78,11 @@ int		Fixed::toInt (void) const
 {
 	int	nbr;
 	
-	nbr = this->_nb >> _frac;
+	nbr = this->_nb >> this->_frac;
 	return (nbr);
 }
 
-std::ostream&	operator<<(std::ostream & o, Fixed const & rhs)
+std::ostream	&operator<<(std::ostream &o, const Fixed &rhs)
 {
 	o << rhs.toFloat();
 	return (o);

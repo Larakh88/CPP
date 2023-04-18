@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:08 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/17 17:44:38 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/18 08:16:21 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,22 @@ public:
 	Fixed (const Fixed &copy);
 	
 	Fixed	&operator=(const Fixed &rhs);
+	bool	operator<(const Fixed &rhs) const;
+	bool	operator>(const Fixed &rhs) const;
+	bool	operator<=(const Fixed &rhs) const;
+	bool	operator>=(const Fixed &rhs) const;
+	bool	operator==(const Fixed &rhs) const;
+	bool	operator!=(const Fixed &rhs) const;
+
+	Fixed	operator+(const Fixed &rhs) const;
+	Fixed	operator-(const Fixed &rhs) const;
+	Fixed	operator*(const Fixed &rhs) const;
+	Fixed	operator/(const Fixed &rhs) const;
+
+	Fixed	&operator++(); //prefix ++x return x by reference
+	Fixed	operator++(int); //postfix x++ return a copy of original
+	Fixed	&operator--(); //prefix ++x return x by reference
+	Fixed	operator--(int); //postfix x++ return a copy of original
 	
 	void	setRawBits (const int raw);
 	int		getRawBits (void) const;
