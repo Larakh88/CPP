@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:08 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/18 08:16:21 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:12:11 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ public:
 	int		getRawBits (void) const;
 	float	toFloat (void) const;
 	int		toInt (void) const;
+	
+	static Fixed		&min (Fixed &nb1, Fixed &nb2);
+	static const Fixed	&min (const Fixed &nb1, const Fixed &nb2);
+	static Fixed		&max (Fixed &nb1, Fixed &nb2);
+	static const Fixed	&max (const Fixed &nb1, const Fixed &nb2);
 
 };
 

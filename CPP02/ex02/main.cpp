@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:22:46 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/18 08:16:16 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:12:10 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,22 @@ int main( void )
 	std::cout << "c * d = " << c * d << std::endl;
 	std::cout << "c / d = " << c / d << std::endl;
 	
-	std::cout << "\n\033[31m" << "Increment/decrement: " << "\033[30m\n";
+	std::cout << "\n\033[31m" << "Increment/decrement a = ";
 	Fixed		a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	//std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << a << ", b = " << b << "\033[30m\n";
+	std::cout << "a = " << a << std::endl;
+	std::cout << "++a = " << ++a << std::endl;
+	std::cout << "a = " << a << std::endl;
+	std::cout << "a++ = " << a++ << std::endl;
+	std::cout << "a = " << a << std::endl << std::endl;
+	std::cout << "a = " << a << std::endl;
+	std::cout << "--a = " << --a << std::endl;
+	std::cout << "a = " << a << std::endl;
+	std::cout << "a-- = " << a-- << std::endl;
+	std::cout << "a = " << a << std::endl << std::endl;
+	std::cout << "b = " << b << std::endl;
+	std::cout << "max between a and b is " << Fixed::max( a, b ) << std::endl;
+	std::cout << "min between a and b is " << Fixed::min( a, b ) << std::endl;
 	return 0;
 }

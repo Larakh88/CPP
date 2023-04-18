@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:05 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/18 08:16:19 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:12:08 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,34 @@ int		Fixed::toInt (void) const
 	
 	nbr = this->_nb >> this->_frac;
 	return (nbr);
+}
+
+Fixed	&Fixed::min (Fixed &nb1, Fixed &nb2)
+{
+	if (nb1 < nb2)
+		return (nb1);
+	return (nb2);
+}
+
+const Fixed	&Fixed::min (const Fixed &nb1, const Fixed &nb2)
+{
+	if (nb1 < nb2)
+		return (nb1);
+	return (nb2);
+}
+
+Fixed&	Fixed::max (Fixed &nb1, Fixed &nb2)
+{
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
+}
+
+const Fixed	&Fixed::max (const Fixed &nb1, const Fixed &nb2)
+{
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
 }
 
 /* Stream redirection operator */
