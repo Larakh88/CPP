@@ -6,13 +6,13 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 15:25:38 by lel-khou          #+#    #+#              #
-#    Updated: 2023/04/11 19:43:36 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/04/19 11:41:36 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 
-FLAG = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = weapon
 
@@ -27,7 +27,7 @@ OBJS = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CXX) $(FLAG) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

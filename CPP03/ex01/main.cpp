@@ -5,35 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 10:52:46 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/19 17:55:59 by lel-khou         ###   ########.fr       */
+/*   Created: 2023/04/19 11:38:30 by lel-khou          #+#    #+#             */
+/*   Updated: 2023/04/19 17:51:16 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main ()
+int main()
 {
-    ClapTrap	lara("Lara");
-    ClapTrap	clap("Clap");
-
-    clap.attack("Lara");
-    lara.takeDamage(10);
-    lara.beRepaired(5);
+	ScavTrap	scav("Scav");
+	ScavTrap	scav1("Scav1");
+	ScavTrap	scav2;
 
 	std::cout << std::endl;
-    lara.attack("Clap");
-    clap.takeDamage(5);
-    clap.beRepaired(1000);
-
+	scav.attack("Scav1");
+	scav1.beRepaired(10);
+	scav1.guardGate();
+	
 	std::cout << std::endl;
-	ClapTrap	newClap;
-	newClap = clap;
-
+	scav2 = scav;
+	scav.attack("Scav2");
+	scav2.beRepaired(10);
 	std::cout << std::endl;
-	clap.attack("newClap");
-	newClap.takeDamage(1005);
-	newClap.beRepaired(5);
-
-    return 0;
 }

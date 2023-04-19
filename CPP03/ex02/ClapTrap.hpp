@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:40:13 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/19 11:35:14 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:58:22 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 class	ClapTrap {
-private:
+protected:
 	std::string	_name;
 	int			_hit;
 	int			_damage;
