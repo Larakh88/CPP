@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:12:28 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/23 23:32:46 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:06:57 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 
 int main()
 {
+	Cat	cat("GIGI");
+	std::cout << std::endl;
+	
+	Cat	newCat(cat);
+	std::cout << std::endl;
+	
+	std::cout << newCat.getType() << std::endl;
+	newCat.makeSound();
+	std::cout << std::endl;
+	
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();

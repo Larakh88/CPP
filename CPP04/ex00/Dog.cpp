@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:12:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/20 14:39:29 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:34:34 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog(std::string type) :	Animal(type)
 	std::cout << this->_type << " - Dog String Constructor Called!\n";
 }
 
-Dog::Dog(const Dog &copy)
+Dog::Dog(const Dog &copy) : Animal(copy)
 {
 	std::cout << "Dog Copy Constructor Called!\n";
 	*this = copy;

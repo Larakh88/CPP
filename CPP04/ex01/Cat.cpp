@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:12:37 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/20 14:39:28 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:33:32 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 
 Cat::Cat(void) : Animal("Cat")
 {
+	this->brain = new Brain();
 	std::cout << this->_type << " - Cat Default Constructor Called!\n";
 }
 
 Cat::Cat(std::string type) :	Animal(type)
 {
+	this->brain = new Brain();
 	std::cout << this->_type << " - Cat String Constructor Called!\n";
 }
 
-Cat::Cat(const Cat &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
-	std::cout << "Cat Copy Constructor Called!\n";
-	*this = copy;
+	this->brain = new Brain(*copy.brain);
+	std::cout << this->_type << " - Cat Copy Constructor Called!\n";
 }
 
 Cat::~Cat(void)
 {
+	delete this->brain;
 	std::cout << this->_type << " - Cat Destructor Called!\n";
 }
 
 Cat		&Cat::operator=(const Cat &copy)
 {
 	if (this != &copy)
+	{
 		this->_type = copy._type;
+		this->brain = new Brain(*copy.brain);
+	}
 	std::cout << this->_type << " - Cat Copy Assignment Called!\n";
 	return (*this);
 }
@@ -44,4 +50,14 @@ Cat		&Cat::operator=(const Cat &copy)
 void	Cat::makeSound(void) const
 {
 	std::cout << "Meawwww....\n";
+}
+
+void	Cat::printBrain(int i) const
+{
+	this->brain->printBrain(i);
+}
+
+void	Cat::setIdea(int i, std::string newIdea)
+{
+	this->brain->setIdea(i, newIdea);
 }
