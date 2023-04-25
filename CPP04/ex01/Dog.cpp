@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:12:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/24 14:33:28 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:07:34 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ Dog::~Dog(void)
 
 Dog		&Dog::operator=(const Dog &copy)
 {
+	if (this->brain)
+		delete this->brain;
 	if (this != &copy)
 	{
 		this->_type = copy._type;

@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:24:05 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/17 17:38:07 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:16:13 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,4 @@ int		Fixed::getRawBits (void) const
 	std::cout << "getRawBits member function called\n";
 	return (this->_nb);
 }
+
