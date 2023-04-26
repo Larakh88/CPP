@@ -6,12 +6,12 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:27:48 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/26 21:50:59 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/26 22:13:41 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(1)
 {
@@ -83,7 +83,7 @@ void	Bureaucrat::exc()
 		throw(Bureaucrat::GradeTooLowException());
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	try {
 		form.beSigned(*this);
