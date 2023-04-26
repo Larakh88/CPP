@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:27:48 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/25 14:35:45 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:07:25 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(1)
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	std::cout << this->_name << " - Bureaucrat Data Constructor Called.\n";
-	tcatch();
+	exc();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName()), _grade(copy.getGrade())
 {
-	*this = copy;
 	std::cout << this->_name << " - Bureaucrat Copy Constructor Called.\n";
+	exc();
 }
 
 Bureaucrat::~Bureaucrat()
@@ -42,7 +42,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &copy)
 		this->_grade = copy.getGrade();
 		std::cout << "\033[0;34m" << "Only grade was copied. Name is const so Default name was assigned.\n" << "\033[0;37m";
 	}
-	tcatch();
+	exc();
 	return (*this);
 }
 
@@ -65,13 +65,13 @@ int			Bureaucrat::getGrade() const
 void		Bureaucrat::incr()
 {
 	this->_grade--;
-	tcatch();
+	exc();
 }
 
 void	Bureaucrat::decr()
 {
 	this->_grade++;
-	tcatch();
+	exc();
 }
 
 void	Bureaucrat::exc()
@@ -82,37 +82,14 @@ void	Bureaucrat::exc()
 		throw(Bureaucrat::GradeTooLowException());
 }
 
-void	Bureaucrat::tcatch()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	try {
-		Bureaucrat::exc();
-	}
-	catch(Bureaucrat::GradeTooHighException &e)
-	{
-		e.printMessage();
-		this->_grade = 1;
-	}
-	catch(Bureaucrat::GradeTooLowException &e)
-	{
-		e.printMessage();
-		this->_grade = 150;
-	}
+	std::cout << "Grade is Too High.\n";
+	return (0);
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException() {}
-
-Bureaucrat::GradeTooHighException::~GradeTooHighException() {}
-
-void	Bureaucrat::GradeTooHighException::printMessage()
+const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	std::cout << "Grade is Too High. Grade was set to 1.\n";
-}
-
-Bureaucrat::GradeTooLowException::GradeTooLowException() {}
-
-Bureaucrat::GradeTooLowException::~GradeTooLowException() {}
-
-void	Bureaucrat::GradeTooLowException::printMessage()
-{
-	std::cout << "Grade is Too Low. Grade was set to 150.\n";
+	std::cout << "Grade is Too Low.\n";
+	return (0);
 }
