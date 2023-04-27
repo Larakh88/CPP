@@ -6,7 +6,7 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:27:44 by lel-khou          #+#    #+#              #
-#    Updated: 2023/04/26 22:13:39 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/04/27 07:17:55 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-HEADER = Bureaucrat.hpp AForm.hpp
+HEADER = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp
 
-SRC = Bureaucrat.cpp main.cpp AForm.cpp
+SRC = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp
 
 NAME = form
 

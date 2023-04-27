@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:36:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/26 22:13:37 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:35:04 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	AForm();
 	AForm(std::string name, const int sgrade, const int egrade);
 	AForm(const AForm &copy);
-	~AForm();
+	virtual ~AForm();
 
 	AForm				&operator=(const AForm &copy);
 	const std::string	getName() const;
@@ -36,7 +36,7 @@ public:
 	int					getSgrade() const;
 	int					getEgrade() const;
 	void				exc();
-	virtual void		beSigned(const Bureaucrat &bur) = 0;
+	virtual void		beSigned(const Bureaucrat &bur);
 
 	class GradeTooHighException : public std::exception {
 	public:
