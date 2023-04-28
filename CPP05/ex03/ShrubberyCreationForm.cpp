@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 22:14:35 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/27 13:00:17 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:45:33 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void				ShrubberyCreationForm::action() const
 {
-	std::ofstream	shrub(this->_target + "_shrubbery");
+	std::ofstream	shrub((_target + "_shrubbery").c_str());
 	if (!shrub.good())
 	{
 		std::cout << "File Error.\n";
