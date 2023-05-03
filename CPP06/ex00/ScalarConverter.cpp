@@ -6,197 +6,238 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:56:56 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/02 17:16:44 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:14:08 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(std::string input, int i) : _input(input), _type(i) {}
+ScalarConverter::ScalarConverter() {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &copy) : _input(copy.getInput()), _type(copy.getType()) {}
+ScalarConverter::ScalarConverter(const ScalarConverter &) {}
 
-ScalarConverter::~ScalarConverter()
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &)
 {
-	std::cout << "Destructor Called.\n";
-}
-
-ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &copy)
-{
-	if (this != &copy)
-	{
-		this->_input = copy.getInput();
-		this->_type = copy.getType();
-	}
 	return (*this);
 }
 
-std::string		ScalarConverter::getInput() const
+void			ScalarConverter::convert(std::string input)
 {
-	return (this->_input);
-}
-
-int				ScalarConverter::getType() const
-{
-	return (this->_type);
-}
-
-char			ScalarConverter::getC() const
-{
-	return (this->_c);
-}
-
-int				ScalarConverter::getI() const
-{
-	return (this->_i);
-}
-
-float			ScalarConverter::getF() const
-{
-	return (this->_f);
-}
-
-double			ScalarConverter::getD() const
-{
-	return (this->_d);
-}
-
-void			ScalarConverter::convert()
-{
-	switch(this->_type)
+	int	type = input_check(input);
+	char		_c;
+	int			_i;
+	float		_f;
+	double		_d;
+	
+	switch(type)
 	{
 		case 0:
-			this->_i = atoi((this->_input).c_str());
-			this->_d = static_cast<double>(this->_i);
-			this->_f = static_cast<float>(this->_i);
-			this->_c = static_cast<char>(this->_i);
-			if (this->_i < 0 || this->_i > 126)
-				std::cout << "char: Impossible\n";
-			else if ((this->_i != 10 && this->_i != 9) && this->_i < 32)
-				std::cout << "char: Non Displayable\n";
-			else
-				std::cout << "char: '" << this->_c << "'" << std::endl;
-			std::cout << "int: " << this->_i << std::endl;
-			if (this->_input.length() <= 6)
-			{
-				std::cout << "float: " << this->_f << ".0f" << std::endl;
-				std::cout << "double: " << this->_d << ".0" << std::endl;
-			}
-			else
-			{
-				std::cout << "float: " << this->_f << "f" << std::endl;
-				std::cout << "double: " << this->_d << std::endl;
-			}
+			_i = atoi((input).c_str());
+			cas0(_i, input);
 			break;
 			
 		case 1:
-			this->_d = atof((this->_input).c_str());
-			this->_i = static_cast<int>(this->_d);
-			this->_f = static_cast<float>(this->_d);
-			this->_c = static_cast<char>(this->_d);
-			if (this->_i < 0 || this->_i > 126)
-				std::cout << "char: Impossible\n";
-			else if ((this->_i != 10 && this->_i != 9) && this->_i < 32)
-				std::cout << "char: Non Displayable\n";
-			else
-				std::cout << "char: '" << this->_c << "'" << std::endl;
-			if (this->_input == "+inf" || this->_input == "nan" || this->_input == "-inf")
-				std::cout << "int: Impossible\n";
-			else
-				std::cout << "int: " << this->_i << std::endl;
-			if (this->_input.length() <= 6)
-			{
-				if (this->_input == "+inf")
-				{
-					std::cout << "float: " << INFINITY << "f" << std::endl;
-					std::cout << "double: " << INFINITY << std::endl;
-				}
-				else if (this->_input == "-inf")
-				{
-					std::cout << "float: " << -INFINITY << "f" << std::endl;
-					std::cout << "double: " << -INFINITY << std::endl;
-				}
-				else if (this->_input == "nan")
-				{
-					std::cout << "float: nanf" << std::endl;
-					std::cout << "double: nan" << std::endl;
-				}
-				else
-				{
-					std::cout << "float: " << this->_f << ".0f" << std::endl;
-					std::cout << "double: " << this->_d << ".0" << std::endl;
-				}
-			}
-			else
-			{
-				std::cout << "float: " << this->_f << "f" << std::endl;
-				std::cout << "double: " << this->_d << std::endl;
-			}
+			_d = atof((input).c_str());
+			cas1(_d, input);
 			break;
 			
 		case 2:
-			this->_f = static_cast<float>(atof((this->_input).c_str()));
-			this->_i = static_cast<int>(this->_f);
-			this->_d = static_cast<double>(this->_f);
-			this->_c = static_cast<char>(this->_f);
-			if (this->_i < 0 || this->_i > 126)
-				std::cout << "char: Impossible\n";
-			else if ((this->_i != 10 && this->_i != 9) && this->_i < 32)
-				std::cout << "char: Non Displayable\n";
-			else
-				std::cout << "char: '" << this->_c << "'" << std::endl;
-			if (this->_input == "+inff" || this->_input == "nan" || this->_input == "-inff")
-				std::cout << "int: Impossible\n";
-			else
-				std::cout << "int: " << this->_i << std::endl;
-			if (this->_input.length() <= 6)
-			{
-				if (this->_input == "+inff")
-				{
-					std::cout << "float: " << INFINITY << "f" << std::endl;
-					std::cout << "double: " << INFINITY << std::endl;
-				}
-				else if (this->_input == "-inff")
-				{
-					std::cout << "float: " << -INFINITY << "f" << std::endl;
-					std::cout << "double: " << -INFINITY << std::endl;
-				}
-				else if (this->_input == "nanf")
-				{
-					std::cout << "float: nanf" << std::endl;
-					std::cout << "double: nan" << std::endl;
-				}
-				else
-				{
-					std::cout << "float: " << this->_f << ".0f" << std::endl;
-					std::cout << "double: " << this->_d << ".0" << std::endl;
-				}
-			}
-			else
-			{
-				std::cout << "float: " << this->_f << "f" << std::endl;
-				std::cout << "double: " << this->_d << std::endl;
-			}
+			_f = static_cast<float>(atof((input).c_str()));
+			cas2(_f, input);
 			break;
 			
 		case 3:
-			this->_c = this->_input[0];
-			this->_i = static_cast<int>(this->_c);
-			this->_d = static_cast<double>(this->_c);
-			this->_f = static_cast<float>(this->_c);
-			std::cout << "char: '" << this->_c << "'" << std::endl;
-			std::cout << "int: " << this->_i << std::endl;
-			if (this->_input.length() <= 6)
+			_c = input[0];
+			std::cout << "char: '" << _c << "'" << std::endl;
+			std::cout << "int: " << static_cast<int>(_c) << std::endl;
+			if (input.length() <= 6)
 			{
-				std::cout << "float: " << this->_f << ".0f" << std::endl;
-				std::cout << "double: " << this->_d << ".0" << std::endl;
+				std::cout << "float: " << static_cast<float>(_c) << ".0f" << std::endl;
+				std::cout << "double: " << static_cast<double>(_c) << ".0" << std::endl;
 			}
 			else
 			{
-				std::cout << "float: " << this->_f << "f" << std::endl;
-				std::cout << "double: " << this->_d << std::endl;
+				std::cout << "float: " << static_cast<float>(_c) << "f" << std::endl;
+				std::cout << "double: " << static_cast<double>(_c) << std::endl;
 			}
 			break;
+		case 4:
+			std::cout << "\033[1;31m" << "Please enter one parameter to be converted!\n" << "\033[0;37m";
+			break;
 	}
+}
+
+void	ScalarConverter::cas0(int _i, std::string input)
+{
+	double d = atof((input).c_str());
+	if (_i < 0 || _i > 126)
+	std::cout << "char: Impossible\n";
+	else if ((_i != 10 && _i != 9) && _i < 32)
+		std::cout << "char: Non Displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(_i) << "'" << std::endl;
+	if (d > INT_MAX || d < INT_MIN)
+		std::cout << "int: overflow\n";
+	else
+		std::cout << "int: " << _i << std::endl;
+	if (input.length() <= 6)
+	{
+		std::cout << "float: " << static_cast<float>(d) << ".0f" << std::endl;
+		std::cout << "double: " << d << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
+	}
+}
+
+void	ScalarConverter::cas1(double _d, std::string input)
+{
+	if (_d < 0 || _d > 126 || input =="nan" || input == "-inf" || input == "+inf")
+		std::cout << "char: Impossible\n";
+	else if ((_d != 10 && _d != 9) && _d < 32)
+		std::cout << "char: Non Displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(_d) << "'" << std::endl;
+	if (input == "+inf" || input == "nan" || input == "-inf")
+		std::cout << "int: Impossible\n";
+	else if (_d > INT_MAX || _d < INT_MIN)
+		std::cout << "int: overflow\n";
+	else
+		std::cout << "int: " << static_cast<int>(_d) << std::endl;
+	if (input.length() <= 6)
+	{
+		if (input == "+inf")
+		{
+			std::cout << "float: " << INFINITY << "f" << std::endl;
+			std::cout << "double: " << INFINITY << std::endl;
+		}
+		else if (input == "-inf")
+		{
+			std::cout << "float: " << -INFINITY << "f" << std::endl;
+			std::cout << "double: " << -INFINITY << std::endl;
+		}
+		else if (input == "nan")
+		{
+			std::cout << "float: nanf" << std::endl;
+			std::cout << "double: nan" << std::endl;
+		}
+		else
+		{
+			std::cout << "float: " << static_cast<float>(_d) << ".0f" << std::endl;
+			std::cout << "double: " << _d << ".0" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(_d) << "f" << std::endl;
+		std::cout << "double: " << _d << std::endl;
+	}
+}
+
+void	ScalarConverter::cas2(float _f, std::string input)
+{
+	if (_f < 0 || _f > 126 || input =="nan" || input == "-inf" || input == "+inf")
+		std::cout << "char: Impossible\n";
+	else if ((_f != 10 && _f != 9) && _f < 32)
+		std::cout << "char: Non Displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(_f) << "'" << std::endl;
+	if (input == "+inff" || input == "nan" || input == "-inff")
+		std::cout << "int: Impossible\n";
+	else if (_f > INT_MAX || _f < INT_MIN)
+		std::cout << "int: overflow\n";
+	else
+		std::cout << "int: " << static_cast<int>(_f) << std::endl;
+	if (input.length() <= 6)
+	{
+		if (input == "+inff")
+		{
+			std::cout << "float: " << INFINITY << "f" << std::endl;
+			std::cout << "double: " << INFINITY << std::endl;
+		}
+		else if (input == "-inff")
+		{
+			std::cout << "float: " << -INFINITY << "f" << std::endl;
+			std::cout << "double: " << -INFINITY << std::endl;
+		}
+		else if (input == "nanf")
+		{
+			std::cout << "float: nanf" << std::endl;
+			std::cout << "double: nan" << std::endl;
+		}
+		else
+		{
+			std::cout << "float: " << _f << ".0f" << std::endl;
+			std::cout << "double: " << static_cast<double>(_f) << ".0" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "float: " << _f << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(_f) << std::endl;
+	}
+}
+
+int	double_float(std::string str)
+{
+	int	i;
+	int	j;
+	int len;
+	
+	i = 0;
+	j = 0;
+	len = str.length();
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (i < len)
+	{
+		if (str[i] == '.')
+			j++;
+		if (isdigit(str[i]) == 0 && str[i] != '.')
+		{
+			if (str[i] == 'f' && i == len - 1)
+			{
+				i++;
+				continue;
+			}
+			return (2);
+		}
+		i++;
+	}
+	if (j == 1 && i == len && str[i - 1] == 'f')
+		return (1);
+	if (j == 1 && i == len)
+		return (0);
+	return (2);
+}
+
+int		ScalarConverter::input_check(std::string str)
+{
+	int	i = 0;
+
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while(i < (int)str.length())
+	{
+		if (isdigit(str[i]) == 0)
+			break;
+		i++;
+	}
+	if (i == (int)str.length() && i != 1)
+		return (0);
+	if (double_float(str) == 0 || str == "-inf" || str == "+inf" || str == "nan") //double
+		return (1);
+	else if (double_float(str) == 1 || str == "-inff" || str == "+inff" || str == "nanf") //float
+		return (2);
+	else
+	{
+		if ((str.length() == 1 && isprint(str[0]) != 0)) //char
+			return (3);
+	}
+	return (4);
 }
 

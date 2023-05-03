@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:56:54 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/02 16:22:34 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:17:09 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,25 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <limits>
+#include <climits>
 #include <cstdlib>
 #include <cmath>
 
 class ScalarConverter {
 private:
 	std::string	_input;
-	int			_type;
-	char		_c;
-	int			_i;
-	float		_f;
-	double		_d;
+
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter &);
+	ScalarConverter	&operator=(const ScalarConverter &);
 
 public:	
-	ScalarConverter(std::string input, int i);
-	ScalarConverter(const ScalarConverter &copy);
 	~ScalarConverter();
-	
-	ScalarConverter	&operator=(const ScalarConverter &copy);
-	std::string		getInput() const;
-	int				getType() const;
-	void			convert();
-	char			getC() const;
-	int				getI() const;
-	float			getF() const;
-	double			getD() const;
-};
+	static void				convert(std::string input);
+	static int				input_check(std::string str);
+	static void				cas0(int i, std::string input);
+	static void				cas1(double d, std::string input);
+	static void				cas2(float _f, std::string input);
+};	
 
 #endif
