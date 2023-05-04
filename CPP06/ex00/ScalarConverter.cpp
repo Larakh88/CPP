@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:56:56 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/04 10:00:25 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:48:30 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,8 +227,11 @@ int		ScalarConverter::input_check(std::string str)
 			break;
 		i++;
 	}
-	if (i == (int)str.length() && i != 1)
-		return (0);
+	if (i == (int)str.length())
+	{
+		if ((i == 1 && (str[i] != '-' || str[i] != '+')) || i > 1)
+			return (0);
+	}	
 	if (double_float(str) == 0 || str == "-inf" || str == "+inf" || str == "nan") //double
 		return (1);
 	else if (double_float(str) == 1 || str == "-inff" || str == "+inff" || str == "nanf") //float
