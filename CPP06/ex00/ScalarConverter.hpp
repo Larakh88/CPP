@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:56:54 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/03 17:17:09 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:00:26 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 class ScalarConverter {
 private:
-	std::string	_input;
-
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &);
 	ScalarConverter	&operator=(const ScalarConverter &);
