@@ -72,6 +72,7 @@
 		"complex": "cpp",
 		"__functional_03": "cpp",
 		"memory_resource": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"*.tpp": "cpp"
 	}
 }
