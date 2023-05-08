@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 12:05:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/04 16:39:47 by lel-khou         ###   ########.fr       */
+/*   Created: 2023/05/05 12:35:48 by lel-khou          #+#    #+#             */
+/*   Updated: 2023/05/08 08:15:09 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#ifndef ITER_HPP
+# define ITER_HPP
 
-Serializer::Serializer() {}
+#include <iostream>
 
-Serializer::Serializer(const Serializer &copy)
+template< typename T>
+void	iter(T const *array, int len, void (*f)(T const &, int))
 {
-	*this = copy;
+	for (int i = 0; i < len; i++)
+		f(array[i], i);
 }
 
-Serializer::~Serializer() {}
-
-Serializer	&Serializer::operator=(const Serializer &copy)
+template< typename T>
+void	f(T const &var, int i)
 {
-	(void)copy;
-	return (*this);
+	std::cout << "Item " << i << " in this array is " << var << std::endl;
 }
 
-uintptr_t	Serializer::serialize(Data* ptr)
-{
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
-
-Data		*Serializer::deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Data *>(raw));
-}
+#endif

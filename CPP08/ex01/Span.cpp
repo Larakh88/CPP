@@ -1,38 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 12:05:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/04 16:39:47 by lel-khou         ###   ########.fr       */
+/*   Created: 2023/05/08 13:45:31 by lel-khou          #+#    #+#             */
+/*   Updated: 2023/05/08 14:03:56 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "Span.hpp"
 
-Serializer::Serializer() {}
-
-Serializer::Serializer(const Serializer &copy)
+Span::Span(unsigned int n)
 {
-	*this = copy;
+	
 }
 
-Serializer::~Serializer() {}
-
-Serializer	&Serializer::operator=(const Serializer &copy)
+Span::Span(const Span &copy)
 {
-	(void)copy;
-	return (*this);
+	
+}
+	
+Span::~Span(void)
+{
+	
+}
+	
+Span	&Span::operator=(const Span &copy)
+{
+	
+}
+	
+void	Span::addNumber(int nbr)
+{
+	
+}
+	
+int		Span::shortestSpan()
+{
+	
 }
 
-uintptr_t	Serializer::serialize(Data* ptr)
+int		Span::shortestSpan()
 {
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
-
-Data		*Serializer::deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Data *>(raw));
+	
 }
