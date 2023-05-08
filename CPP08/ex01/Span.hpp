@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/08 14:04:08 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:09:43 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 
 #include <iostream>
 #include <exception>
+#include <vector>
+#include <algorithm>
+#include <cstdlib> 
 
 class	Span {
 private:
-	unsigned int	_N;
-	int				*_arr;
+	unsigned int		_N;
+	std::vector<int>	_vec;
+
+	Span();
 
 public:	
 	Span(unsigned int n);
@@ -32,7 +37,7 @@ public:
 	
 	int		shortestSpan();
 	
-	int		shortestSpan();
+	int		longestSpan();
 	
 	class	Error : public std::exception {
 	public:
