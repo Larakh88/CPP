@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:31 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/08 20:09:46 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:20:54 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ Span	&Span::operator=(const Span &copy)
 	}
 	return (*this);
 }
+
+int		&Span::operator[](int pos)
+{
+	if (pos < 0 || pos > static_cast<int>(this->_vec.size()))
+		throw(Error());
+	return (this->_vec[pos]);
+}
 	
 void	Span::addNumber(int nbr)
 {
@@ -42,32 +49,41 @@ void	Span::addNumber(int nbr)
 		this->_vec.push_back(nbr);
 	}
 }
+
+void	Span::addMulNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if ((end - begin) > static_cast<int>((this->_N - this->_vec.size())))
+		throw(Error());
+	while (begin < end)
+	{
+		addNumber(*begin);
+		begin++;
+	}
+}
 	
 int		Span::longestSpan()
 {
-	std::vector<int>::iterator it = this->_vec.begin();
-	
 	if (this->_vec.size() <= 1)
 		throw(Error());
 	std::sort (this->_vec.begin(), this->_vec.end());
-	return (abs(*it - *(it + this->_vec.size() - 1)));
+	return (abs(this->_vec[0] - this->_vec[this->_vec.size() - 1]));
 }
 
 int		Span::shortestSpan()
 {
 	int small = INT_MAX;
-	std::vector<int>::iterator it;
+	int j = this->_vec.size() - 1;
 	
 	if (this->_vec.size() <= 1)
 		throw(Error());
 	std::sort (this->_vec.begin(), this->_vec.end());
-	for (it = this->_vec.begin(); it != this->_vec.end(); ++it)
-		if (abs(*it - *(it + 1)) < small)
-			small = abs(*it - *(it + 1));
+	for (int i = 0; i < j; i++)
+		if (abs(this->_vec[i + 1] - this->_vec[i]) < small)
+			small = abs(this->_vec[i + 1] - this->_vec[i]);
 	return (small);
 }
 
 const char	*Span::Error::what() const throw ()
 {
-	return ("Vector already Full.\n");
+	return ("Out of Range.\n");
 }

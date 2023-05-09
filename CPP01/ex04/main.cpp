@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:28:33 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/04/27 13:00:20 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:30:25 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main(int argc, char **argv)
 {
 	if (argc == 4)
 	{
-		std::string	newFilename = getNewFile(argv[1]);;
-		std::ofstream	newFile;;
+		std::string	newFilename = getNewFile(argv[1]);
+		std::ofstream	newFile;
 		std::ifstream	myFile (argv[1]);
 		std::string		line;
 		std::string		text;

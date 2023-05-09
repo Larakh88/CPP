@@ -6,7 +6,7 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 13:45:35 by lel-khou          #+#    #+#              #
-#    Updated: 2023/05/09 10:38:03 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/05/09 11:26:09 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,11 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp Span.cpp
+SRC = main.cpp
 
-FILE = Array Vector
+HEADER = MutantStack.hpp
 
-HEADER = Span.hpp
-
-NAME = span
+NAME = mutant
 
 RM = rm -f
 
@@ -33,7 +31,6 @@ $(NAME): $(OBJ) $(HEADER)
 	
 clean:
 	$(RM) $(OBJ)
-	$(RM) $(FILE)
 
 fclean: clean
 	$(RM) $(NAME)

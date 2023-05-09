@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 20:24:15 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/08 13:49:04 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:46:32 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
-		std::cout << numbers[i] << std::endl;
+		std::cout << "number: " << numbers[i] << std::endl;
+        std::cout << "mirror: " << mirror[i] << std::endl;
     }
     delete [] mirror;//
     return 0;

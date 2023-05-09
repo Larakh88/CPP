@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:32 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/08 20:09:43 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:20:59 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <exception>
 #include <vector>
 #include <algorithm>
-#include <cstdlib> 
+#include <cstdlib>
+#include <climits>
+#include <fstream>
 
 class	Span {
 private:
@@ -32,8 +34,11 @@ public:
 	~Span(void);
 	
 	Span	&operator=(const Span &copy);
+	int		&operator[](int pos);
 	
 	void	addNumber(int nbr);
+	
+	void	addMulNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	
 	int		shortestSpan();
 	
