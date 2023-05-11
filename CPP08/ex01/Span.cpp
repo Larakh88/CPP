@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:31 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/09 11:20:54 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:28:48 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int		Span::longestSpan()
 {
 	if (this->_vec.size() <= 1)
 		throw(Error());
-	std::sort (this->_vec.begin(), this->_vec.end());
-	return (abs(this->_vec[0] - this->_vec[this->_vec.size() - 1]));
+	std::vector<int> temp(this->_vec);
+	std::sort (temp.begin(), temp.end());
+	return (abs(temp[0] - temp[this->_vec.size() - 1]));
 }
 
 int		Span::shortestSpan()
@@ -76,10 +77,11 @@ int		Span::shortestSpan()
 	
 	if (this->_vec.size() <= 1)
 		throw(Error());
-	std::sort (this->_vec.begin(), this->_vec.end());
+	std::vector<int> temp(this->_vec);
+	std::sort (temp.begin(), temp.end());
 	for (int i = 0; i < j; i++)
-		if (abs(this->_vec[i + 1] - this->_vec[i]) < small)
-			small = abs(this->_vec[i + 1] - this->_vec[i]);
+		if (abs(temp[i + 1] - temp[i]) < small)
+			small = abs(temp[i + 1] - temp[i]);
 	return (small);
 }
 
