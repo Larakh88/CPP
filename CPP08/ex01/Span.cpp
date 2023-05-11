@@ -6,15 +6,21 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:31 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/10 17:28:48 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:13:29 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() {}
+Span::Span() : _N(2) {}
 
-Span::Span(unsigned int n) : _N(n) {}
+Span::Span(unsigned int n) 
+{
+	int i = n;
+	if (i <= 0)
+		throw(Error());
+	this->_N = n;
+}
 
 Span::Span(const Span &copy)
 {

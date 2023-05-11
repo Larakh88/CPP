@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:34 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/10 17:19:49 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:13:32 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 int main ()
 {
+	try {
+	Span s(1);
+	s.addNumber(1);
+	s.shortestSpan();
+	// s.longestSpan();
+	// s.addNumber(2);
+	} catch (std::exception &e) { std::cout << e.what(); }
+	
 	Span sp = Span(10005);
 
 	sp.addNumber(6);

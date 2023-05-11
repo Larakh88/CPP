@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:34:52 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/05/10 17:44:15 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/05/11 09:46:58 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
 	MutantStack<int> mstack;
-	
+
 	mstack.push(5);
 	mstack.push(17);
 	
