@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:01:15 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/24 14:22:12 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:33:06 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <string>
 #include <map>
 #include <algorithm>
 #include <fstream>
@@ -21,7 +22,6 @@
 #include <cstdlib>
 
 #define RESET "\033[30m"
-#define BLUE "\033[34m"
 #define PINK "\033[35m"
 #define ERROR1() (PINK "Error: not a positive number. \n" RESET)
 #define ERROR2(date) (PINK "Error: bad input => " + date + " \n" RESET)

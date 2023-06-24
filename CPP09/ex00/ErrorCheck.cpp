@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 13:39:20 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/24 15:11:47 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:35:12 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	value_checker(std::string value)
 	ret = is_number(value, 0);
 	if (ret != 0)
 		return (ret);
-	val = stof(value);
+	val = (float)(std::atof(value.c_str()));
 	if (val > 1000 || val <= 0)
 		return (3);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:52:02 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/24 15:13:31 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:37:43 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &) { return (*
 
 BitcoinExchange::BitcoinExchange(std::string data)
 {
-	std::ifstream	dataFile(data);
+	std::ifstream	dataFile(data.c_str	());
 	std::string		line;
 	int 			i = 0;
 	int				pos;
@@ -36,7 +36,7 @@ BitcoinExchange::BitcoinExchange(std::string data)
 			pos = line.find(',');
 			date.append(line, 0, pos);
 			val.append(line, pos + 1, line.length() - pos);
-			rate = std::stof(val);
+			rate = (float)(std::atof(val.c_str()));
 			this->_data.insert(std::make_pair(date, rate));
 			date.clear();
 			val.clear();
@@ -64,6 +64,6 @@ void	BitcoinExchange::printExchange(std::string date, std::string value)
 		it--;
 		rate = it->second;
 	}
-	res = stof(value) * rate;
+	res = (float)(std::atof(value.c_str())) * rate;
 	std::cout << date << " => " << value << " = " << res << std::endl;
 }
