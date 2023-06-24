@@ -74,6 +74,9 @@
 		"memory_resource": "cpp",
 		"filesystem": "cpp",
 		"*.tpp": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"__tree": "cpp",
+		"csignal": "cpp",
+		"map": "cpp"
 	}
 }
