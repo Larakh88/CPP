@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:47 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/25 19:50:15 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/25 22:59:30 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ private:
 	void	insertionSortRecursive(int n);
 	void	jacobNbs(int n);
 	int		binarySearch(int max, int min, int nb);
+	void	insertPend(std::vector<int> temp);
 	
 	std::vector<int>	_aVec;
 	std::vector<int>	_bVec;

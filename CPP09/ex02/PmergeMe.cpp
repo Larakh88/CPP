@@ -6,18 +6,15 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/25 22:55:19 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:07:57 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {}
-
 PmergeMe::PmergeMe(const PmergeMe &) {}
-
 PmergeMe	&PmergeMe::operator=(const PmergeMe &) { return(*this); }
-
 PmergeMe::~PmergeMe() {}
 
 PmergeMe::PmergeMe(int argc, char **argv)
@@ -57,9 +54,9 @@ PmergeMe::PmergeMe(int argc, char **argv)
 			j++;
 		}
 	}
-	jacobNbs(temp.size()); // create jacobsthal number sequence based on nb of elements in pend/temp
 	printVec(_aVec, "After:  ");
 	printVec(temp, "Temp:   ");
+	insertPend(temp);
 }
 
 void	PmergeMe::vecError(int argc, char **argv)
@@ -103,6 +100,15 @@ void	PmergeMe::insertionSortRecursive(int n)
 	}
 	_aVec[j + 2] = last;
 	_aVec[j + 3] = second;
+}
+void	PmergeMe::insertPend(std::vector<int> temp)
+{
+	jacobNbs(temp.size()); // create jacobsthal number sequence based on nb of elements in pend/temp
+	_aVec.insert(_aVec.begin(), temp[0]);
+	temp.erase(temp.begin());
+	printVec(_aVec, "After adding 0:   ");
+	printVec(temp, "After removing 0:  ");
+
 }
 
 // max and min are the iterators to search in between in the vector; 
