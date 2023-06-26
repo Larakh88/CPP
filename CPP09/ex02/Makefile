@@ -6,7 +6,7 @@
 #    By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/23 10:55:37 by lel-khou          #+#    #+#              #
-#    Updated: 2023/06/24 17:42:34 by lel-khou         ###   ########.fr        #
+#    Updated: 2023/06/26 17:34:30 by lel-khou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp PmergeMe.cpp
+SRC = main.cpp PmergeMe.cpp deque.cpp
 
 HEADER = PmergeMe.hpp
 

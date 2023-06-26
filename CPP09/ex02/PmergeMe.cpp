@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/26 08:53:25 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:38:17 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,26 @@ PmergeMe::~PmergeMe() {}
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
+	executeVec(argc, argv);
+	executeDe(argc, argv);
+	finalPrint();
+}
+
+void	PmergeMe::executeVec(int argc, char **argv)
+{
 	std::vector<int>	temp;
 
+	this->_straFlag = false;
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+	long s = start.tv_sec * 1000 + start.tv_usec / 1000;
 	vecError(argc, argv); //check for errors - if no errors, create aVec and bVec
 	if ((int)_bVec.size() % 2 != 0) // if total number is odd, save the last one in straggler
 	{
 		this->_straggler = *(_bVec.end() - 1);
+		this->_straFlag = true;
 		_aVec.erase(_aVec.end() - 1);
-		_bVec.erase(_bVec.end() - 1);
 	}
-	printVec(_aVec, "Before:     ");
 	for (int i = 0; i < (int)_aVec.size() - 1; i++) // determine largest of 2 elements and make it first
 	{
 		if (i % 2 == 0 )
@@ -41,9 +51,7 @@ PmergeMe::PmergeMe(int argc, char **argv)
 			}
 		}
 	}
-	printVec(_aVec, "After Pairs:  ");
 	insertionSortRecursive((int)_aVec.size()); // sort pairs in ascending order based on the largest elements
-	printVec(_aVec, "After Sort:   ");
 	int j = 0;
 	for (int i = 0; i < (int)_aVec.size(); i++) // split in 2 vectors, main/aVec and pend/temp
 	{
@@ -54,9 +62,10 @@ PmergeMe::PmergeMe(int argc, char **argv)
 			j++;
 		}
 	}
-	printVec(_aVec, "After:  ");
-	printVec(temp, "Temp:   ");
 	insertPend(temp);
+	gettimeofday(&end, NULL);
+	long e = end.tv_sec * 1000 + end.tv_usec / 1000;
+	_vecDelta = double(e - s);
 }
 
 void	PmergeMe::vecError(int argc, char **argv)
@@ -65,7 +74,7 @@ void	PmergeMe::vecError(int argc, char **argv)
 	std::string	input;
 	std::vector<int>::iterator	it;
 
-	if (argc < 2)
+	if (argc < 3)
 		throw(Error());
 	//checking for negative nbs, nbs bigger than int max and any other input errors
 	for (int i = 1; i < argc; i++)
@@ -103,28 +112,27 @@ void	PmergeMe::insertionSortRecursive(int n)
 }
 void	PmergeMe::insertPend(std::vector<int> temp)
 {
-	std::vector<int>	insertIndex;
-	
+	createIndex();
 	jacobNbs(temp.size()); // create jacobsthal number sequence based on nb of elements in pend/temp
 	_aVec.insert(_aVec.begin(), temp[0]); // inserting b1 into main but do not remove from temp
-	//temp.erase(temp.begin());
-	insertIndex.push_back(0);
-	// printVec(_aVec, "After adding 0:   ");
-	// printVec(temp, "After removing 0:  ");
 	for (int i = 0, ja = 1; i < (int)temp.size() - 1; ja++)
 	{
 		int	size = _jacob[ja] - _jacob[ja - 1];
 		for (int j = size; j > 0; j--)
 		{
-			//int max = 
 			if (j + i >= (int)temp.size())
 				continue;
-			int place = binarySearch(_aVec.size() , 0, temp[j + i]);
+			int max = findMax(j + i);
+			int place = binarySearch(max, 0, temp[j + i]);
 			_aVec.insert(_aVec.begin() + place, temp[j + i]);
 		} 
 		i = i + size;
 	}
-	printVec(_aVec, "Final Sorted:   ");
+	if (this->_straFlag == true)
+	{
+		int strag = binarySearch(_aVec.size(), 0, this->_straggler);
+		_aVec.insert(_aVec.begin() + strag, this->_straggler);
+	}
 
 }
 
@@ -167,11 +175,43 @@ void	PmergeMe::jacobNbs(int n)
 		int nb = _jacob[j] + 2 * (_jacob[j - 1]);
 		_jacob.push_back(nb);
 	}
-	printVec(_jacob, "Jacob:   ");
 }
 
 const char	*PmergeMe::Error::what() const throw()
 {
 	std::cout << "Error\n";
 	return (0);
+}
+
+void	PmergeMe::createIndex()
+{
+	for (int i = 0; i < (int)_aVec.size(); i++)
+		_index.push_back(_aVec[i]);
+}
+
+int		PmergeMe::findMax(int nb)
+{
+	if (nb > (int)_index.size())
+		return ((int)_index.size());
+	int avecNb = _index[nb];
+	
+	for (int i = 0; i < (int)_aVec.size(); i++)
+		if (_aVec[i] == avecNb)
+			return (i);
+	return (0);
+}
+
+void	PmergeMe::finalPrint()
+{
+	printVec(_bVec, BLUE "Before:  " RESET);
+	std::cout << std::endl;
+	printVec(_aVec, BLUE "After:  " RESET);
+	std::cout << BLUE "Time to process a range of " << _aVec.size() << " elements with std::vector : " << this->_vecDelta << " ms\n" RESET;
+	
+	std::cout << "--------------------------------------------------------------------------------------------------------------------------"<< std::endl ;
+	
+	printDe(_bDe, BLUE "Before:  " RESET);
+	std::cout << std::endl;
+	printDe(_aDe, BLUE "After:  " RESET);
+	std::cout << BLUE "Time to process a range of " << _aDe.size() << " elements with std::vector : " << this->_deDelta << " ms\n" RESET;
 }
