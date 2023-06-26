@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/25 23:07:57 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/26 08:35:51 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,35 @@ void	PmergeMe::insertionSortRecursive(int n)
 }
 void	PmergeMe::insertPend(std::vector<int> temp)
 {
+	std::vector<int>	insertIndex;
+	
 	jacobNbs(temp.size()); // create jacobsthal number sequence based on nb of elements in pend/temp
-	_aVec.insert(_aVec.begin(), temp[0]);
-	temp.erase(temp.begin());
-	printVec(_aVec, "After adding 0:   ");
-	printVec(temp, "After removing 0:  ");
+	_aVec.insert(_aVec.begin(), temp[0]); // inserting b1 into main but do not remove from temp
+	//temp.erase(temp.begin());
+	insertIndex.push_back(0);
+	// printVec(_aVec, "After adding 0:   ");
+	// printVec(temp, "After removing 0:  ");
+	for (int i = 1, ja = 1; i <= (int)temp.size(); ja++)
+	{
+		int	size = _jacob[ja] - _jacob[ja - 1];
+		std::cout << "size: " << size << std::endl;
+		for (int j = size; j >= i; j--)
+		{
+			//int max = 
+			if (j + i > (int)temp.size())
+			{
+				std::cout << "hi\n";
+				continue;
+			}
+			int place = binarySearch(_aVec.size() , 0, temp[j]);
+			std::cout << "place: " << place << std::endl;
+			_aVec.insert(_aVec.begin() + place, temp[j]);
+			std::cout << j;
+			printVec(_aVec, ":  ");
+		} 
+		i = i + size;
+	}
+	printVec(_aVec, "Final Sorted:   ");
 
 }
 
@@ -145,7 +169,7 @@ void	PmergeMe::jacobNbs(int n)
 	_jacob.push_back(1);
 	_jacob.push_back(3);
 	
-	for (int j = 1; n - 1 > _jacob[j]; j++)
+	for (int j = 1; n >= _jacob[j]; j++)
 	{
 		int nb = _jacob[j] + 2 * (_jacob[j - 1]);
 		_jacob.push_back(nb);
