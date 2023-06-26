@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/26 08:35:51 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/26 08:53:25 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,23 +111,16 @@ void	PmergeMe::insertPend(std::vector<int> temp)
 	insertIndex.push_back(0);
 	// printVec(_aVec, "After adding 0:   ");
 	// printVec(temp, "After removing 0:  ");
-	for (int i = 1, ja = 1; i <= (int)temp.size(); ja++)
+	for (int i = 0, ja = 1; i < (int)temp.size() - 1; ja++)
 	{
 		int	size = _jacob[ja] - _jacob[ja - 1];
-		std::cout << "size: " << size << std::endl;
-		for (int j = size; j >= i; j--)
+		for (int j = size; j > 0; j--)
 		{
 			//int max = 
-			if (j + i > (int)temp.size())
-			{
-				std::cout << "hi\n";
+			if (j + i >= (int)temp.size())
 				continue;
-			}
-			int place = binarySearch(_aVec.size() , 0, temp[j]);
-			std::cout << "place: " << place << std::endl;
-			_aVec.insert(_aVec.begin() + place, temp[j]);
-			std::cout << j;
-			printVec(_aVec, ":  ");
+			int place = binarySearch(_aVec.size() , 0, temp[j + i]);
+			_aVec.insert(_aVec.begin() + place, temp[j + i]);
 		} 
 		i = i + size;
 	}
