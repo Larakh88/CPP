@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:49 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/26 19:38:17 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:09:51 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,12 +206,25 @@ void	PmergeMe::finalPrint()
 	printVec(_bVec, BLUE "Before:  " RESET);
 	std::cout << std::endl;
 	printVec(_aVec, BLUE "After:  " RESET);
-	std::cout << BLUE "Time to process a range of " << _aVec.size() << " elements with std::vector : " << this->_vecDelta << " ms\n" RESET;
+	std::cout << BLUE "Time to process a range of " << _aVec.size() << " elements with std::vector : " << this->_vecDelta << " ms\n" ;
 	
+	
+	std::cout << "--------------------------------------------------------------------------------------------------------------------------";
 	std::cout << "--------------------------------------------------------------------------------------------------------------------------"<< std::endl ;
 	
 	printDe(_bDe, BLUE "Before:  " RESET);
 	std::cout << std::endl;
 	printDe(_aDe, BLUE "After:  " RESET);
-	std::cout << BLUE "Time to process a range of " << _aDe.size() << " elements with std::vector : " << this->_deDelta << " ms\n" RESET;
+	std::cout << BLUE "Time to process a range of " << _aDe.size() << " elements with std::deque : " << this->_deDelta << " ms\n" ;
+	
+	// is_sorted is CPP 17++
+	if (std::is_sorted(_aVec.begin(), _aVec.end()) == true)
+		std::cout << PINK "Vector - Properly Sorted!" << std::endl;
+	else
+		std::cout << PINK "Vector - Wrong Sort!" << std::endl;
+		
+	if (std::is_sorted(_aDe.begin(), _aDe.end()) == true)
+		std::cout << PINK "Deque - Properly Sorted!" << RESET << std::endl;
+	else
+		std::cout << PINK "Deque - Wrong Sort!" << RESET << std::endl;
 }

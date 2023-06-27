@@ -6,7 +6,7 @@
 /*   By: lel-khou <lel-khou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:32:47 by lel-khou          #+#    #+#             */
-/*   Updated: 2023/06/26 17:46:24 by lel-khou         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:03:15 by lel-khou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 #include <limits.h>
 #include <cstdlib>
 #include <sys/time.h>
+#include <algorithm>
 #define RESET "\033[30m"
 #define BLUE "\033[34m"
+#define PINK "\033[35m"
 
 class PmergeMe {
 private:
